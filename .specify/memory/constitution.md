@@ -1,24 +1,18 @@
 <!--
 SYNC IMPACT REPORT
 ==================
-Version change: [NEW] → 1.0.0
-Modified principles: Initial ratification with 10 principles
+Version change: 1.0.0 → 1.1.0
+Modified principles:
+  - Principle V: "Phase I Scope Constraints" → "Phase I Scope Constraints (Basic Level)"
+  - Expanded with new sections XI and XII defining Intermediate and Advanced levels
 Added sections:
-  - Project Identity
-  - Development Philosophy
-  - AI Role Definition (Claude Code)
-  - Human Role Definition
-  - Phase I Scope Constraints
-  - Architectural Principles
-  - Specification Discipline
-  - Quality Standards
-  - Evolution Guarantee
-  - Success Definition
+  - Principle XI: Phase II - Intermediate Level (Organization & Usability)
+  - Principle XII: Phase III - Advanced Level (Intelligent Features)
 Removed sections: None
 Templates requiring updates:
-  ✅ .specify/templates/plan-template.md - Constitution Check section present
-  ✅ .specify/templates/spec-template.md - Aligned with spec discipline requirements
-  ✅ .specify/templates/tasks-template.md - Aligned with phase-based development
+  ✅ .specify/templates/plan-template.md - Constitution Check supports multi-phase validation
+  ✅ .specify/templates/spec-template.md - User stories and requirements align with phase constraints
+  ✅ .specify/templates/tasks-template.md - Phase-based organization supports incremental delivery
 Follow-up TODOs: None
 -->
 
@@ -88,17 +82,19 @@ The human:
 **Rationale**: Human expertise focuses on strategy and validation while AI handles tactical
 implementation, creating an efficient division of cognitive labor.
 
-### V. Phase I Scope Constraints
+### V. Phase I - Basic Level (In-Memory CLI Foundation)
 
-**In-Memory CLI Foundation**
+**Scope Constraints**
 
-For Phase I, the following constraints are NON-NEGOTIABLE:
+For Phase I (Basic Level), the following constraints are NON-NEGOTIABLE:
 - The application MUST be a Python CLI program (no GUI, no web interface)
 - Data MUST be stored in-memory only (no databases, no file persistence)
 - No external databases or APIs are permitted
 - Python version MUST be 3.13 or higher
 - Dependency management MUST use UV package manager
 - The system MUST support exactly these five operations: Add, View, Update, Delete, Complete
+
+**Status**: Phase I is complete and stable. All Phase I features are fully implemented.
 
 **Rationale**: Strict scope constraints prevent over-engineering in Phase I while establishing
 a foundation that can evolve into more complex architectures in subsequent phases.
@@ -163,17 +159,88 @@ each phase can build upon previous work without architectural rewrites.
 
 ### X. Success Definition
 
-**Phase I Completion Criteria**
+**Phase Completion Criteria**
 
-Phase I is considered complete ONLY when ALL of the following criteria are met:
-- All 5 required features (Add, View, Update, Delete, Complete) are fully implemented
+Each phase is considered complete ONLY when ALL of the following criteria are met:
+- All required features are fully implemented according to specifications
 - Code strictly follows the specifications with no unauthorized deviations
 - Repository structure matches planned deliverables exactly
-- CLI application runs successfully with all features working
+- Application runs successfully with all features working
 - Specification-driven workflow is clearly demonstrated through artifacts
+- All tests (if applicable) pass successfully
+
+**Phase I Specific**:
+- All 5 required features (Add, View, Update, Delete, Complete) are fully implemented
 
 **Rationale**: Explicit completion criteria prevent premature progression to subsequent
 phases and ensure each phase delivers a working, validated system.
+
+### XI. Phase II - Intermediate Level (Organization & Usability)
+
+**Focus**: Improving task organization and overall usability to make the application
+more polished and practical.
+
+**Capabilities**
+
+The system SHALL provide:
+
+- **Task Priorities**
+  - Fixed priority levels: `high`, `medium`, `low`
+
+- **Tags / Categories**
+  - Optional labels such as `work`, `home`, `personal`
+
+- **Search**
+  - Keyword-based search across task titles and descriptions
+
+- **Filtering**
+  - By completion status (`completed`, `pending`)
+  - By priority level
+  - By due date
+
+- **Sorting**
+  - By due date
+  - By priority
+  - Alphabetical order (A–Z)
+
+**Guarantees**
+
+- All features MUST build upon existing Basic-level functionality
+- Behavior MUST remain deterministic and user-driven
+- No intelligent automation or notifications are introduced at this level
+- UI styling and persistence are out of scope for Intermediate level
+- Phase I (Basic Level) features MUST remain fully functional and unbroken
+
+**Rationale**: Incremental feature addition ensures the application remains stable and
+testable at each evolutionary stage while adding practical value for users.
+
+### XII. Phase III - Advanced Level (Intelligent Features)
+
+**Focus**: Time-aware and intelligent task management features.
+
+**Capabilities**
+
+The system SHALL provide:
+
+- **Recurring Tasks**
+  - Support for repeating tasks (e.g., daily, weekly, custom intervals)
+  - Completing a recurring task MUST automatically schedule the next occurrence
+
+- **Due Dates**
+  - Tasks may include both date and time
+
+- **Reminders**
+  - Time-based notifications for upcoming or overdue tasks
+
+**Guarantees**
+
+- All Advanced features MUST build upon Phase I and Phase II functionality
+- Phase I and Phase II features MUST remain fully functional and unbroken
+- Time-based features MUST handle timezone considerations
+- Recurring task logic MUST be deterministic and testable
+
+**Rationale**: Advanced features introduce time-awareness and automation while maintaining
+the architectural integrity established in earlier phases.
 
 ## Governance
 
@@ -198,4 +265,4 @@ constitution MUST follow this process:
 - The file `CLAUDE.md` provides runtime development guidance for AI agents and MUST
   align with this constitution
 
-**Version**: 1.0.0 | **Ratified**: 2025-12-27 | **Last Amended**: 2025-12-27
+**Version**: 1.1.0 | **Ratified**: 2025-12-27 | **Last Amended**: 2025-12-30
